@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Citywalk @ High Street</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<body>
+
+  <% include ./partials/header.ejs %>
+  <% include ./partials/user-navigation.ejs %>
+      <div class="split left">
+        <div class="centered">
+          <h2>Profile Picture</h2>
+
+    <img src="/images/image.jpg" alt="Avatar" >
+        </div>
+      </div>
+      <div class="split right">
+        <div class="centered">
+          <h2>User Profile</h2>
+          <p>
+               <form action="/login" method="Post">
+                <table class="table">
+                        <tr>
+                          <td><input type="text" name="username" placeholder="Username.."></td>
+                        </tr>
+                        <tr>
+                        <tr></tr><tr></tr><tr></tr><tr></tr>
+                          <td><input type="password" name="pwd" maxlength="8" placeholder="Password.."></td>
+                        </tr>
+                        <tr></tr><tr></tr><tr></tr><tr></tr>
+                        <tr>
+
+                            <td><input type="password" name="cnfrmpwd" maxlength="8" placeholder="Confirm Password.."></td>
+                         </tr>
+                         <tr></tr><tr></tr><tr></tr><tr></tr>
+                         <tr>
+
+                            <td><input type="text" name="email" placeholder="Email.."></td>
+                        </tr>
+                        <tr></tr><tr></tr><tr></tr><tr></tr>
+                        <tr>
+
+                            <td><input type="text" name="contact" placeholder="Contact Number.."></td>
+                        </tr>
+                      </table>
+                      <br>
+                      <input type="hidden" name="action" value="signUp" />
+                      <input type="submit" value="Sign Up">
+                </form>
+          </p>
+        </div>
+      </div>
+      <% include ./partials/footer.ejs %>
+
+</body>
+</html>

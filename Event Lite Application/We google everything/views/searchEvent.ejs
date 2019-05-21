@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>It's happening!</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <script>
+      function decodeToken(){
+        var token = window.location.hash;
+        var splitToken = token.split("&");
+        var idString = splitToken[0];
+        var idStringSplit= idString.split("=");
+        var idToken = idStringSplit[1];
+        var payLoadIp= idToken.split(".")[1];
+      	var playload = JSON.parse(atob(payLoadIp));
+        sessionStorage.setItem('userName', playload.given_name+" "+playload.family_name);
+        sessionStorage.setItem('userEmail', playload.email);
+        sessionStorage.setItem('userPhone', playload.phone_number);
+      };
+    </script>
+</head>
+<body>
+    <% include ./partials/header.ejs %>
+  <% include ./partials/user-navigation.ejs %>
+  <script>
+      if (sessionStorage.userName==null){
+        decodeToken();
+        document.getElementById("posi3").innerHTML = "Welcome "+sessionStorage.getItem('userName')+"!..";
+        document.getElementById("userProfile").href="/userprofile?user="+sessionStorage.getItem('userName');
+        document.getElementById("userEvents").href="/userEvents?userEmail="+sessionStorage.getItem('userEmail');
+      }else {
+        document.getElementById("posi3").innerHTML = "Welcome "+sessionStorage.getItem('userName')+"!..";
+        document.getElementById("userProfile").href="/userprofile?user="+sessionStorage.getItem('userName');
+        document.getElementById("userEvents").href="/userEvents?userEmail="+sessionStorage.getItem('userEmail');
+      }
+    </script>
+    <div class="sideshiftSE">
+        <form action="/searchEvent" method="Post">
+        <div  class="SEvents">
+        <table class="table1">
+            <tr>
+                <td class="select">City:
+                    <select name="city">
+
+                        <option value=""></option>
+                        <option value="Charlotte">Charlotte</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Austin">Austin</option>
+                        <option value="Raleigh">Raleigh</option>
+                        <option value="San Fransico">San Fransico</option>
+
+                    </select>
+                </td>
+                <td class="select">State:
+                    <select name="state">
+                        <option value=""></option>
+                        <option value="North Carolina">North Carolina</option>
+                        <option value="California">California</option>
+                        <option value="Texas">Texas</option>
+                    </select>
+                </td>
+                <td class="select">Zip Code:
+                    <select name="zipcode">
+                        <option value=""></option>
+                        <option value="28262">28262</option>
+                        <option value="48583">48583</option>
+                        <option value="36472">36472</option>
+                        <option value="48572">48572</option>
+                        <option value="14643">14643</option>
+                    </select>
+                </td>
+                <td class="select">Event Type:
+                    <select name="eventType">
+                        <option value=""></option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Food">Food</option>
+                        <option value="Party">Party</option>
+                        <option value="Theatre">Theatre</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Performance">Performance</option>
+                        <option value="Music">Music</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Race">Race</option>
+                    </select>
+                </td>
+
+				<td><button type="submit" onClick="myFunction()">Search</button>
+	</td>
+            </tr>
+        </table>
+      </div>
+      </form>
+
+    </div>
+    <div id="datatodisplay">
+     <table class="table2">
+           <tr>
+               <th>Events Near You</th>
+           </tr>
+           <% for(let i = 0; i < item.length; i++) { %>
+             <tr>
+                  <td><a id='items<%=i%>' href='/eventPage/<%= item[i].eventId %>?userName='><%= item[i].eventName %></a></td>
+                  <script>
+                     document.getElementById('items<%=i%>').href='/eventPage/<%= item[i].eventId %>?userName='+
+                             sessionStorage.getItem('userName')+"&userEmail="+
+                             sessionStorage.getItem('userEmail')+"&userPhone="+
+                             sessionStorage.getItem('userPhone');
+                 </script>
+                  <td><%= item[i].category %></td>
+                  <!-- <td><%= item[i].eventDescription %></td> -->
+                  <td><%= item[i].organizer %></td>
+                  <td><%= item[i].city %></td>
+                  <td><%= item[i].date %></td>
+                  <td><%= item[i].time %></td>
+
+              </tr>
+               <% } %>
+
+</table>
+                     </div>
+                      <script>
+                      function myFunction() {
+                        var x = document.getElementById("datatodisplay");
+                         if (x.style.display === "none") {
+                           x.style.display = "block";
+                         } else {
+                           x.style.display = "none";
+                         }
+                    }
+</script>
+
+  <% include ./partials/footer.ejs %>
+
+</body>
+
+</html>

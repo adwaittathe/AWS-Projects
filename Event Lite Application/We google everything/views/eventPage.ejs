@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+                <title>It's happening!</title>
+                <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+                <body>
+                    <% include ./partials/header.ejs %>
+  <% include ./partials/user-navigation.ejs %>
+
+<div class="mainEvent2">
+  <div id="tablediv">
+                        <table class="table3">
+
+<tr>
+
+<th colspan="2"><%= item.eventName %></th>
+    <!-- <td>Event Type</td> -->
+</tr>
+                                <tr>
+                <td colspan="2"><%= item.category %></td>
+                                    <!-- <td>Event Type</td> -->
+
+              </tr>
+
+                                <tr>
+
+                    <td colspan="2"><%= item.eventDescription %></td>
+                                    <!-- <td>What is it about!</td> -->
+
+                </tr>
+                                <tr>
+                                    <td colspan="2"><%= item.organizer %></td>
+                                    <!-- <td>Who organised it</td> -->
+
+              </tr>
+                                <tr>
+                                    <td colspan="2"><%= item.city %></td>
+                                    <!-- <td>Where</td> -->
+
+                <tr>
+                                        <td colspan="2"><%= item.date %></td>
+                                        <!-- <td>When</td> -->
+
+              </tr>
+                                    <tr>
+                                        <td colspan="2"><%= item.time %></td>
+                                        <!-- <td>Be there at!</td> -->
+            </tr>
+            <tr>
+              <form method="Post" action="/register" id="register">
+              <input type="hidden" name="eventId" value="<%= item.eventId %>"/>
+              <input type="hidden" name="eventName" value="<%= item.eventName %>"/>
+              <input type="hidden" name="cat" value="<%= item.category %>"/>
+              <input type="hidden" name="desc" value="<%= item.eventDescription %>"/>
+              <input type="hidden" name="org" value="<%= item.organizer %>"/>
+              <input type="hidden" name="city" value="<%= item.city %>"/>
+              <input type="hidden" name="date" value="<%= item.date %>"/>
+              <input type="hidden" name="time" value="<%= item.time %>"/>
+
+              <input type="hidden" name="userEmail" value="<%= user.userEmail %>"/>
+              <input type="hidden" name="userFirstName" value="<%= user.userName %>"/>
+              <input type="hidden" name="userPhoneNo" value="<%= user.userPhone %>"/>
+
+              <td><input type="submit" value="Register"></input></td>
+                <!-- <td colspan="2"><%= item.time %></td> -->
+                <!-- <td>Be there at!</td> -->
+              </form>
+</tr>
+
+  </table>
+</div>
+  <div id="map">
+  </div>
+</div>
+
+<script>
+function initMap() {
+ // The location of Uluru
+ var uluru = {lat: <%= item.latitude %>, lng: <%=item.longitude %>};
+ // The map, centered at Uluru
+ var map = new google.maps.Map(
+     document.getElementById('map'), {zoom: 16, center: uluru});
+ // The marker, positioned at Uluru
+ var marker = new google.maps.Marker({position: uluru, map: map});
+
+
+}
+   </script>
+    <script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCU5RPUf0mD3Pg1lKr-5tqIXLXIuSOJNOE&callback=initMap">
+ </script>
+
+  <% include ./partials/footer.ejs %>
+
+</body>
+
+</html>

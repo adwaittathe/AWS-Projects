@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>It's happening!</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+  <body>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/user-navigation.ejs %>
+    <div id="datatodisplay">
+     <table class="table2">
+           <tr>
+               <th>Event Name</th>
+               <th>Event Type</th>
+               <th>Who organised it</th>
+               <th>Where</th>
+               <th>When</th>
+               <th>Be there at!</th>
+           </tr>
+            <% for(let i = 0; i < item.length; i++) { %>
+              <tr>
+                <td> <%= item[i].eventName %> </td>
+                <td> <%= item[i].eventCategory %> </td>
+                <td> <%= item[i].eventOrganizer %> </td>
+                <td> <%= item[i].eventCity %> </td>
+                <td> <%= item[i].eventdate %> </td>
+                <td> <%= item[i].eventtime %> </td>
+
+
+              </tr>
+              <% } %>
+     </table>
+    </div>
+<script>
+  function myFunction() {
+  var x = document.getElementById("datatodisplay");
+  if (x.style.display === "none") {
+  x.style.display = "block";
+  } else {
+  x.style.display = "none";
+  }
+  }
+  </script>
+  <% include ./partials/footer.ejs %>
+  </body>
+  </html>

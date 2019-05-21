@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Citywalk @ High Street</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<body>
+    <header class="banner">
+        <p id="posi3" style="color:white">
+            Not signed in.
+        </p>
+        <h1 style="text-align:center; color:white">Citywalk @ High Street</h1>
+        <h3 style="text-align:center; color:white">Watch, Dine, Explore</h3>
+    </header>
+    </head>
+<body>
+      <div class="split left">
+        <div class="centered">
+          <h2>Sign In</h2>
+          <p>
+                <table class="table">
+                <tr>
+                    <td>Email-ID</td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="pwd" maxlength="8"></td>
+                </tr>
+                </table>
+                <br>
+                <input type="submit" value="Sign In">
+                <br>
+                <br>
+                <input type="submit" value="Login with Facebook">
+                <br>
+                <br>
+                <input type="submit" value="Login with Google">
+          </p>
+        </div>
+      </div>
+      <div class="split right">
+        <div class="centered">
+          <h2>Sign Up</h2>
+          <p>
+               <form action="/login" method="Post">
+                <table class="table">
+                        <tr>
+                          <td>Email-ID</td>
+                          <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                          <td>Password</td>
+                          <td><input type="password" name="pwd" maxlength="8"></td>
+                        </tr>
+                        <tr>
+                            <td>Confirm Password</td>
+                            <td><input type="password" name="cnfrmpwd" maxlength="8"></td>
+                         </tr>
+                         <tr>
+                            <td>First Name</td>
+                            <td><input type="text" name="fname"></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td><input type="text" name="lname"></td>
+                        </tr>
+                      </table>
+                      <br>
+                      <input type="hidden" name="action" value="signUp" />
+                      <input type="submit" value="Sign Up">
+                </form>
+          </p>
+        </div>
+      </div>
+      </body>
+    <footer>© MANAGEMENT OFFICE ON HIGH STREET. ALL RIGHTS RESERVED.</footer>
+</body>
+</html>
