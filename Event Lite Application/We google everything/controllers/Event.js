@@ -16,8 +16,8 @@ var client = require('twilio')(
 let awsConfig = {
   "region":"us-east-1",
   "endpoint":"http://dynamodb.us-east-1.amazonaws.com",
-  "accessKeyId":"AKIA2TSXN42LKEA3NN7G",
-  "secretAccessKey":"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"
+  "accessKeyId":"",
+  "secretAccessKey":""
 };
 
 AWS.config.update(awsConfig);
