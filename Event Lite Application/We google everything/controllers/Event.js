@@ -6,8 +6,8 @@ const urlencodedParser = bodyParser.urlencoded({ extended : false });
 const AWS= require("aws-sdk");
 const multer = require('multer');
 const multerS3 = require('multer-s3');
-var accountSid = 'AC0d8bef4735b4b45382bcf16d72a9e1f8';
-var authToken = 'f55989338041e0804a2216d74dd96df4';
+var accountSid = '';
+var authToken = '';
 
 var client = require('twilio')(
   accountSid, authToken
